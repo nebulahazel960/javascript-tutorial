@@ -1,0 +1,57 @@
+
+import 'prompt.txt' as prompt
+
+model Model1 {
+    baseUrl: @url({{ %MODEL_BASE_URL }})
+    apiKey: {{ %MODEL_API_KEY }}
+}
+
+export service TestService extends FaiService {
+
+    model: Model1
+    stream: true
+    memory: FixSizeMemory {
+        size: 128mb
+    }
+    
+    property count: int = 0
+    
+    chat startChat(text: string) {
+        stream: false
+        logHttp: true
+        tool {
+            MyFunctions::getEncourageMessage
+        }
+        
+        user(text)
+        
+        onMessageStart(sink) {
+            sink.next("Start")
+        }
+        
+        onMessage(runner, res, sink) {
+            sink.next(res.content)
+        }
+    }
+    
+    chat intro(name: string, role: string)  {
+        if (name.isNotEmpty) {
+            @user {
+                你好，我叫{{ name ?? '' }}, 是一名{{ role }}
+            }
+        }
+        @user {
+            {{ MyText }}
+        }
+    }
+    
+    text MyText {
+        测试的字符串
+    }
+    
+    
+}
+
+chain MyChain(name, role) {
+    (name, role) -> intro -> startChat
+}

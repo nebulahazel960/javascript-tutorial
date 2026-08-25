@@ -1,0 +1,34 @@
+
+fai:
+  http:
+    readTimeout: 12000
+    connectTimeout: 12000
+    
+  api-key: "{%API_KEY_DEEP_SEEK}"
+  base-url: https://api.deepseek.com
+  model: deepseek-chat
+  
+  openAI:
+    api-key: "{%API_KEY_OPEN_AI}"
+  
+  deepSeek:
+    api-key: "{%API_KEY_DEEP_SEEK}"
+    
+  volcengine:
+    api-key: "{%API_KEY_VOLCENGINE}"
+    
+  
+  models:
+    - id: model1
+      api-key: API_KEY_1
+      base-url: BASE_URL_1
+      model: model-test
+
+    - id: model2
+      platform: volcengine
+      model: doubao-1-5-pro-32k-250115
+
+    - id: model3
+      platform: openAI
+      base-url: https://openai.com
+

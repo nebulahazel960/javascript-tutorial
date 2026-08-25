@@ -1,0 +1,67 @@
+
+fai:
+  http:
+    readTimeout: 12000
+    connectTimeout: 12000
+    
+  api-key: "{%API_KEY_DEEP_SEEK}"
+  base-url: https://api.deepseek.com
+  model: deepseek-chat
+  
+  openAI:
+    api-key: "{%API_KEY_OPEN_AI}"
+  
+  deepSeek:
+    api-key: "{%API_KEY_DEEP_SEEK}"
+    
+  volcengine:
+    api-key: "{%API_KEY_VOLCENGINE}"
+    
+  
+  models:
+    - id: model1
+      api-key: API_KEY_1
+      base-url: BASE_URL_1
+      model: model-test
+
+    - id: model2
+      platform: volcengine
+      model: doubao-1-5-pro-32k-250115
+
+    - id: model3
+      platform: openAI
+      base-url: https://openai.com
+      
+    - id: giteeAI
+      api-key: "{%API_KEY_GITEE_AI}"
+      base-url: https://ai.gitee.com/v1
+      model: DeepSeek-R1
+      
+    - id: giteeAI-Qwen
+      api-key: "{%API_KEY_GITEE_AI}"
+      base-url: https://ai.gitee.com/v1
+      model: Qwen3-32B
+
+    - id: giteeAI-DeepSeek-V3.2-Exp
+      api-key: "{%API_KEY_GITEE_AI}"
+      base-url: https://ai.gitee.com/v1
+      model: DeepSeek-V3.2-Exp
+      
+
+  prompts:
+    - id: hello-world
+      messages:
+        - system: 你是一个AI助手，你的名字叫"智能体X"
+        - user: 你好，你叫什么？
+          
+    - id: services-description
+      messages:
+        - user: 然后说说你能提供的服务，总结为三点
+
+    - id: template-message
+      messages:
+        - system: |
+            你是一个AI助手，你的名字叫"{name}"。
+            你今年18岁，喜欢跳舞。
+        - user: 你好，你叫什么？
+

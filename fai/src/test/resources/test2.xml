@@ -1,0 +1,14 @@
+
+<prompt id="Test1">
+    <system>你好，我是{{roleName}}</system>
+    <user condition="state == 'xxx'">
+        我想问: {{question}}
+        <if condition="">好的</if>
+    </user>
+    
+    <script>
+        
+        
+    </script>
+</prompt>
+
